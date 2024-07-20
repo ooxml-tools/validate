@@ -1,3 +1,6 @@
+import typescript from "@rollup/plugin-typescript";
+import { typescriptPaths } from "rollup-plugin-typescript-paths";
+import dts from "rollup-plugin-dts";
 import virtual from "@rollup/plugin-virtual";
 import copy from "rollup-plugin-copy";
 import { getConfig } from "./config.js";
@@ -121,27 +124,38 @@ function shimProcess() {
   `;
 }
 
-export default {
-  input: {
-    index: "index.js",
-    "bin/ooxml-validate": "bin/ooxml-validate.js",
+export default [
+  {
+    input: {
+      index: "index.ts",
+      "bin/ooxml-validate": "bin/ooxml-validate.ts",
+    },
+    output: {
+      dir: outputDir,
+      format: "es",
+    },
+    external: ["yargs/yargs", "yargs/helpers", "fs/promises"],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json" }),
+      virtual({
+        "$blazor-config": getConfig(),
+        process: shimProcess(),
+        module: shimModule(),
+      }),
+      copy({
+        targets: [
+          // FIXME: This is literally just for a `new URL()` in the dotnet runtime file
+          {
+            src: "./dotnet/bin/Release/net8.0/wwwroot/_framework/dotnet.native.wasm",
+            dest: outputDir,
+          },
+        ],
+      }),
+    ],
   },
-  output: {
-    dir: outputDir,
-    format: "es",
+  {
+    input: "index.ts",
+    output: [{ file: `${outputDir}/types.d.ts`, format: "es" }],
+    plugins: [typescriptPaths({ preserveExtensions: true }), dts()],
   },
-  external: ["yargs/yargs", "yargs/helpers", "fs/promises"],
-  plugins: [
-    virtual({
-      "$blazor-config": getConfig(),
-      process: shimProcess(),
-      module: shimModule(),
-    }),
-    copy({
-      targets: [
-        // FIXME: This is literally just for a `new URL()` in the dotnet runtime file
-        { src: "./dotnet/bin/Release/net8.0/wwwroot/_framework/dotnet.native.wasm", dest: outputDir },
-      ],
-    }),
-  ],
-};
+];

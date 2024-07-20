@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/npm/index.js",
+  "types": "./dist/npm/types.d.ts",
   "bin": {
     "ooxml-validate": "./dist/npm/bin/ooxml-validate.js"
   },
@@ -11,7 +12,7 @@
     "ci:build": "npm install && npm run build",
     "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm",
     "build:dotnet": "cd ./dotnet && dotnet workload restore  && dotnet publish -c Release && mkdir -p ./_framework && rm -rf ./_framework && cp -r ./bin/Release/net8.0/wwwroot/_framework ./_framework",
-    "build:npm": "rollup -c rollup.config.mjs",
+    "build:npm": "rollup -c rollup.config.ts --configPlugin typescript",
     "lint:format": "npx prettier . --write",
     "lint": "npx prettier . --check",
     "test": "npm run lint"
@@ -22,11 +23,15 @@
     "./README.md"
   ],
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
     "@rollup/plugin-virtual": "^3.0.2",
+    "@types/yargs": "^17.0.32",
     "prettier": "3.3.3",
     "prettier-plugin-sh": "^0.14.0",
     "rollup": "^4.18.1",
-    "rollup-plugin-copy": "^3.5.0"
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-typescript-paths": "^1.5.0"
   },
   "dependencies": {
     "chalk": "^5.3.0",

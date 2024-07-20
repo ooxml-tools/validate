@@ -1,8 +1,9 @@
+// @ts-ignore: Unreachable code error
 import config from "$blazor-config";
 let FILE_ID = 0;
 let fileStore = new Map();
 
-function arrayBufferToBase64(file) {
+function arrayBufferToBase64(file: Uint8Array) {
   return btoa(
     new Uint8Array(file).reduce(
       (data, byte) => data + String.fromCharCode(byte),
@@ -12,7 +13,7 @@ function arrayBufferToBase64(file) {
 }
 
 export class InvalidVersionError extends Error {
-  constructor(officeVersion) {
+  constructor(officeVersion: string) {
     super(`Invalid office version: ${officeVersion}`);
   }
 }
@@ -25,11 +26,11 @@ export const OFFICE_VERSIONS = [
   "Office2016",
   "Office2019",
   "Office2021",
-];
+] as const;
 
-export const FORMATS = ["xlsx", "pptx", "docx"];
+export const FORMATS = ["xlsx", "pptx", "docx"] as const;
 
-export function getFileFormatFromName(name) {
+export function getFileFormatFromName(name: string) {
   const matchResults = name.match(/(\.[^.]+)$/);
   if (matchResults) {
     const ext = matchResults[1];
@@ -57,10 +58,13 @@ export function getFileFormatFromName(name) {
   }
 }
 
+export type Format = (typeof FORMATS)[number];
+export type OfficeVersion = (typeof OFFICE_VERSIONS)[number];
+
 export default async function validateDocument(
-  inputArrayBuffer,
-  format,
-  officeVersion = "Microsoft365",
+  inputArrayBuffer: Uint8Array,
+  format: Format,
+  officeVersion: OfficeVersion = "Microsoft365",
 ) {
   const { getAssemblyExports, getConfig } = await ready();
 
@@ -74,18 +78,22 @@ export default async function validateDocument(
   const exports = await getAssemblyExports(config.mainAssemblyName);
   const results = exports.Docxidator.Process(FILE_ID, format, officeVersion);
   fileStore.delete(FILE_ID);
-  return JSON.parse(results);
+  const errors = (JSON.parse(results) ?? []) as unknown[];
+  return errors.map((error) => {
+    return error;
+  });
 }
 
 async function _ready() {
-  const mod = (await import("./dotnet/_framework/dotnet.js")).dotnet;
+  const mod = // @ts-ignore: Unreachable code error
+  (await import("./dotnet/_framework/dotnet.js")).dotnet;
   const res = await mod
     .withDiagnosticTracing(false)
     .withConfig(config)
     .create();
 
   res.setModuleImports("index.js", {
-    getFile: (id) => {
+    getFile: (id: string) => {
       const file = fileStore.get(id);
       if (!file) {
         throw new Error(`No such file '${id}'`);
@@ -94,10 +102,13 @@ async function _ready() {
     },
   });
 
-  return res;
+  return {
+    getAssemblyExports: res.getAssemblyExports,
+    getConfig: res.getConfig,
+  };
 }
 
-let runOnce;
+let runOnce: Promise<any> | undefined;
 export async function ready() {
   if (!runOnce) {
     runOnce = _ready();
