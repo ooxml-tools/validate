@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-// import blazorBootConfig from "./_framework/blazor.boot.json" assert { type: 'json' };
+
 const blazorBootConfig = JSON.parse(
   readFileSync(
     new URL("./dotnet/_framework/blazor.boot.json", import.meta.url),
