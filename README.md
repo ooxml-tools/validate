@@ -5,7 +5,38 @@ Validate Office Open XML files in nodejs the browser
 ## Install
 
 ```bash
-npm i @ooxml-tools/validate --save
+npm install @ooxml-tools/validate --save
+```
+
+## CLI
+
+Once installed run
+
+```bash
+ooxml-validate ./test.docx
+```
+
+All the options can be seen with
+
+```bash
+ooxml-validate --help
+# ooxml-validate <filepath>
+#
+# validate docx files
+#
+# Positionals:
+#   filepath  filepath of OOXML file                                      [string]
+#
+# Options:
+#       --help                  Show help                                [boolean]
+#       --version               Show version number                      [boolean]
+#       --office-version, --ov  office version used for validation
+#              [choices: "Microsoft365", "Office2007", "Office2010", "Office2013",
+#              "Office2016", "Office2019", "Office2021"] [default: "Microsoft365"]
+#       --output-format, --of   format of output
+#                                  [choices: "pretty", "json"] [default: "pretty"]
+#   -f, --format                document format (should be auto-detected)
+#                                                [choices: "xlsx", "pptx", "docx"]
 ```
 
 ## Usage
