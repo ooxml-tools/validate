@@ -1,4 +1,5 @@
 # @ooxml-tools/validate
+
 Validate Office Open XML files in nodejs the browser
 
 ## Install
@@ -7,8 +8,8 @@ Validate Office Open XML files in nodejs the browser
 npm i @ooxml-tools/validate --save
 ```
 
-
 ## Usage
+
 Pass an `ArrayBuffer` as `input` and get `results` as output
 
 ```js
@@ -17,10 +18,9 @@ import validateDocument from "@ooxml-tools/validate";
 const version = "Microsoft365";
 const results = await validateDocument(input, version);
 console.log(results);
-``` 
+```
 
 Where `version` of one of `["Microsoft365", "Office2007", "Office2010", "Office2013", "Office2016", "Office2019", "Office2021"]`
-
 
 ## Development
 
@@ -50,7 +50,7 @@ npm run build
 The built npm package will be output to `./dist/npm/*`
 
 ```bash
-ls -l ./dist/npm/ 
+ls -l ./dist/npm/
 # total 41340
 # -rw-r--r-- 1 root root      818 Jul 20 09:05 _virtual_module-D7pcKkEN.js
 # -rw-r--r-- 1 root root     2335 Jul 20 09:05 _virtual_process-CKiOJcMv.js
@@ -63,13 +63,13 @@ ls -l ./dist/npm/
 ```
 
 ## Known issues
+
 It comes with some known issues
 
- - The library is huge, and slow. It's currently base64 encoding the WASM because of the issues getting WASM building across bundlers (**help wanted**)
- - The library base64 encodes the input OOXML file, which is slow. We should be using streaming (**help wanted**)
- - The C# is probably very poor quality... I'm not a C# developer (**help wanted**) 
-
-
+- The library is huge, and slow. It's currently base64 encoding the WASM because of the issues getting WASM building across bundlers (**help wanted**)
+- The library base64 encodes the input OOXML file, which is slow. We should be using streaming (**help wanted**)
+- The C# is probably very poor quality... I'm not a C# developer (**help wanted**)
 
 ## Licence
+
 MIT

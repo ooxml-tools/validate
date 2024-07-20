@@ -1,11 +1,11 @@
-import virtual from '@rollup/plugin-virtual';
-import copy from 'rollup-plugin-copy';
-import { getConfig } from './config.js';
-import {join} from "path"
+import virtual from "@rollup/plugin-virtual";
+import copy from "rollup-plugin-copy";
+import { getConfig } from "./config.js";
+import { join } from "path";
 
-const outputDir = join(import.meta.dirname, "/dist/npm/")
+const outputDir = join(import.meta.dirname, "/dist/npm/");
 
-function shimModule () {
+function shimModule() {
   return `
   const mod = (typeof window === 'undefined') ? await import(await import.meta.resolve("node:module")) : {}
   export const {
@@ -31,10 +31,10 @@ function shimModule () {
       register,
       SourceMap,
   } = mod;
-  `
+  `;
 }
 
-function shimProcess () {
+function shimProcess() {
   return `
   const mod = (typeof window === 'undefined') ? global.process : {}
   export const {
@@ -118,30 +118,30 @@ function shimProcess () {
     _preload_modules,
     report
   } = mod
-  `
+  `;
 }
 
 export default {
   input: {
-    index: 'index.js',
-    "bin/ooxml-validate": 'bin/ooxml-validate.js'
+    index: "index.js",
+    "bin/ooxml-validate": "bin/ooxml-validate.js",
   },
   output: {
     dir: outputDir,
-    format: 'es'
+    format: "es",
   },
-  external: ['yargs/yargs', 'yargs/helpers', 'fs/promises'],
+  external: ["yargs/yargs", "yargs/helpers", "fs/promises"],
   plugins: [
     virtual({
       "$blazor-config": getConfig(),
-      "process": shimProcess(),
-      "module": shimModule()
+      process: shimProcess(),
+      module: shimModule(),
     }),
     copy({
       targets: [
         // FIXME: This is literally just for a `new URL()` in the dotnet runtime file
-        { src: '_framework/dotnet.native.wasm', dest: outputDir },
-      ]
-    })
-  ]
+        { src: "_framework/dotnet.native.wasm", dest: outputDir },
+      ],
+    }),
+  ],
 };

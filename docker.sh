@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
-set -e 
+set -e
 
-docker_command () {
-    if [[ "$DOCKER_RUNNING" == "true" ]]; then
-        echo "Error: Already running inside container"
-        help
-        exit 1
-    fi
+docker_command() {
+  if [[ "$DOCKER_RUNNING" == "true" ]]; then
+    echo "Error: Already running inside container"
+    help
+    exit 1
+  fi
 
-    cleanup() {
-        rm .build-files/Dockerfile || true
-        rm .build-files/compose.yaml || true
-        rmdir .build-files || true
-    }
-    trap cleanup EXIT
+  cleanup() {
+    rm .build-files/Dockerfile || true
+    rm .build-files/compose.yaml || true
+    rmdir .build-files || true
+  }
+  trap cleanup EXIT
 
-    mkdir .build-files
-    cat << EOF > .build-files/Dockerfile
+  mkdir .build-files
+  cat << EOF > .build-files/Dockerfile
 FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -26,7 +26,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && b
 WORKDIR /code
 EOF
 
-    cat << EOF > .build-files/compose.yaml
+  cat << EOF > .build-files/compose.yaml
 services:
   dev:
     build:
@@ -37,8 +37,8 @@ services:
       - ../:/code
 EOF
 
-    docker compose -f .build-files/compose.yaml build
-    docker compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
+  docker compose -f .build-files/compose.yaml build
+  docker compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
 }
 
 docker_command "$@"

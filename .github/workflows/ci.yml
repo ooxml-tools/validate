@@ -4,13 +4,13 @@ on:
   push:
     branches: [main, fix/gh-action-build]
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - "v[0-9]+.[0-9]+.[0-9]+"
     paths-ignore:
-      - '**.md'
+      - "**.md"
   pull_request:
     branches: [main]
     paths-ignore:
-      - '**.md'
+      - "**.md"
 
 jobs:
   build:
@@ -18,6 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: ./docker.sh npm run ci
       - run: ./docker.sh npm run ci:build
       - uses: actions/upload-artifact@v4
         with:
