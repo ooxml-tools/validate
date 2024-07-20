@@ -24,7 +24,9 @@ jobs:
         with:
           name: npm
           path: |
-            ./dist/npm/**/*
+            ./dist/
+            ./package.json
+            ./README.md
 
   release:
     runs-on: ubuntu-latest
