@@ -71,7 +71,7 @@ export type ValidationResult = {
   errorType: number;
 };
 
-export default async function validateDocument(
+export default async function validate(
   inputArrayBuffer: Uint8Array,
   format: Format | undefined,
   officeVersion: OfficeVersion = "Microsoft365",

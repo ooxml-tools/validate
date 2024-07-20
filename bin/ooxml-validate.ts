@@ -7,7 +7,7 @@ import {
   OFFICE_VERSIONS,
   ValidationResult,
 } from "../index";
-import validateDocument from "../index";
+import validate from "../index";
 import chalk from "chalk";
 
 function consolePrintErrors(errors: ValidationResult[]) {
@@ -54,7 +54,7 @@ const argv = yargs(hideBin(process.argv))
 const file = await readFile(argv.filepath);
 const format = argv.format ?? getFileFormatFromName(argv.filepath);
 const officeVersion = argv.officeVersion;
-const results = await validateDocument(file, format, officeVersion);
+const results = await validate(file, format, officeVersion);
 if (argv.outputFormat === "json") {
   console.log(JSON.stringify(results, null, 2));
 } else {

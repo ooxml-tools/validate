@@ -1,4 +1,4 @@
-import validateDocument from "../dist/npm/index.js";
+import validate from "../dist/npm/index.js";
 import { execa } from "execa";
 import test from "node:test";
 import { readFile } from "fs/promises";
@@ -11,12 +11,12 @@ const BIN_FILEPATH =
   "." + resolve(import.meta.dirname, "../../dist/npm/bin/ooxml-validate.js");
 
 test("should validate valid file", async () => {
-  const errors = await validateDocument(await readFile(VALID_FILEPATH));
+  const errors = await validate(await readFile(VALID_FILEPATH));
   assert.deepEqual(errors, []);
 });
 
 test("should validate invalid file", async () => {
-  const errors = await validateDocument(await readFile(INVALID_FILEPATH));
+  const errors = await validate(await readFile(INVALID_FILEPATH));
   assert.deepEqual(errors, [
     {
       description:

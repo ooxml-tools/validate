@@ -44,10 +44,10 @@ ooxml-validate --help
 Pass an `ArrayBuffer` as `input` and get `results` as output
 
 ```js
-import validateDocument from "@ooxml-tools/validate";
+import validate from "@ooxml-tools/validate";
 
 const version = "Microsoft365";
-const results = await validateDocument(input, version);
+const results = await validate(input, version);
 console.log(results);
 ```
 
