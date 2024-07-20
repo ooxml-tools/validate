@@ -86,7 +86,7 @@ export default async function validateDocument(
 
 async function _ready() {
   const mod = // @ts-ignore: Unreachable code error
-  (await import("./dotnet/_framework/dotnet.js")).dotnet;
+    (await import("./dotnet/_framework/dotnet.js")).dotnet;
   const res = await mod
     .withDiagnosticTracing(false)
     .withConfig(config)
