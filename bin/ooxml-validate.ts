@@ -1,15 +1,15 @@
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import { readFile } from "fs/promises";
-import { FORMATS, OFFICE_VERSIONS } from "../index.js";
-import validateDocument from "../index.js";
+import { FORMATS, getFileFormatFromName, OFFICE_VERSIONS, ValidationResult } from "../index";
+import validateDocument from "../index";
 import chalk from "chalk";
 
-function consolePrintErrors(errors: any[]) {
+function consolePrintErrors(errors: ValidationResult[]) {
   if (errors.length > 0) {
     for (const error of errors) {
-      console.log(chalk.blue(`.${error.Path.PartUri}/${error.Path.XPath}`));
-      console.log(`${chalk.red(error.Id)}: ${error.Description}`);
+      console.log(chalk.blue(`.${error.path.partUri}/${error.path.xpath}`));
+      console.log(`└─ ${chalk.red(error.id)}: ${error.description}`);
     }
     console.log("");
   }
@@ -40,15 +40,16 @@ const argv = yargs(hideBin(process.argv))
   })
   .option("format", {
     alias: "f",
-    describe: "document format (should be auto-detected)",
+    describe: "document format (auto-detected from file extension)",
     choices: FORMATS,
-    default: FORMATS[0],
   })
   .demandOption(["filepath"])
   .parseSync();
 
 const file = await readFile(argv.filepath);
-const results = await validateDocument(file, argv.format, argv.officeVersion);
+const format = argv.format ?? getFileFormatFromName(argv.filepath);
+const officeVersion = argv.officeVersion;
+const results = await validateDocument(file, format, officeVersion);
 if (argv.outputFormat === "json") {
   console.log(JSON.stringify(results, null, 2));
 } else {

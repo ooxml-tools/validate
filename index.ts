@@ -61,11 +61,21 @@ export function getFileFormatFromName(name: string) {
 export type Format = (typeof FORMATS)[number];
 export type OfficeVersion = (typeof OFFICE_VERSIONS)[number];
 
+export type ValidationResult = {
+  description: string;
+  path: {
+    xpath: string;
+    partUri: string;
+  },
+  id: string;
+  errorType: number;
+}
+
 export default async function validateDocument(
   inputArrayBuffer: Uint8Array,
-  format: Format,
+  format: Format | undefined,
   officeVersion: OfficeVersion = "Microsoft365",
-) {
+): Promise<ValidationResult[]> {
   const { getAssemblyExports, getConfig } = await ready();
 
   if (!OFFICE_VERSIONS.includes(officeVersion)) {
@@ -79,8 +89,16 @@ export default async function validateDocument(
   const results = exports.Docxidator.Process(FILE_ID, format, officeVersion);
   fileStore.delete(FILE_ID);
   const errors = (JSON.parse(results) ?? []) as unknown[];
-  return errors.map((error) => {
-    return error;
+  return errors.map((error: any) => {
+    return {
+      description: error.Description,
+      path: {
+        xpath: error.Path.XPath,
+        partUri: error.Path.PartUri,
+      },
+      id: error.Id,
+      errorType: error.ErrorType,
+    };
   });
 }
 
@@ -102,10 +120,7 @@ async function _ready() {
     },
   });
 
-  return {
-    getAssemblyExports: res.getAssemblyExports,
-    getConfig: res.getConfig,
-  };
+  return res;
 }
 
 let runOnce: Promise<any> | undefined;
