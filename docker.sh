@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e 
 
-docker () {
+docker_command () {
     echo ">> 1"
     if [[ "$DOCKER_RUNNING" == "true" ]]; then
         echo "Error: Already running inside container"
@@ -36,17 +36,17 @@ services:
       dockerfile: ./Dockerfile
     environment:
       - DOCKER_RUNNING=true
-    ports:
-      - "5035:5035"
-      - "7140:7140"
     volumes:
       - ../:/code
 EOF
 
-  ls -l .build-files/
+
+    ls -l .build-files
+    docker --version
+    docker-compose --version
     docker-compose -f .build-files/compose.yaml build
     docker-compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
 }
 
 echo "$@"
-docker "$@"
+docker_command "$@"
