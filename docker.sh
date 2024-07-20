@@ -43,9 +43,8 @@ EOF
 
     ls -l .build-files
     docker --version
-    docker-compose --version
-    docker-compose -f .build-files/compose.yaml build
-    docker-compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
+    docker compose -f .build-files/compose.yaml build
+    docker compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
 }
 
 echo "$@"
