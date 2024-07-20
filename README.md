@@ -51,17 +51,18 @@ The built npm package will be output to `./dist/npm/*`
 
 ```bash
 ls -l ./dist/npm/ 
-# total 83776
-# -rw-r--r--  1 orangemug  staff        66 19 Jul 15:06 _virtual_module-CEw6d6wF.js
-# -rw-r--r--  1 orangemug  staff        68 19 Jul 15:06 _virtual_process-DZS8S267.js
-# -rw-r--r--  1 orangemug  staff     35982 19 Jul 15:06 dotnet-BoocLZn6.js
-# -rw-r--r--  1 orangemug  staff    149565 19 Jul 15:06 dotnet.native.8.0.7.lb1gfjpp0m-CY6aCK9K.js
-# -rw-r--r--  1 orangemug  staff    222989 19 Jul 15:06 dotnet.runtime.8.0.7.bxd2x47e2z-34A-TL6K.js
-# -rw-r--r--  1 orangemug  staff  41904493 19 Jul 15:06 index.js
-# -rw-r--r--  1 orangemug  staff       259 19 Jul 15:06 package.json
+# total 41340
+# -rw-r--r-- 1 root root      818 Jul 20 09:05 _virtual_module-D7pcKkEN.js
+# -rw-r--r-- 1 root root     2335 Jul 20 09:05 _virtual_process-CKiOJcMv.js
+# drwxr-xr-x 3 root root       96 Jul 20 09:05 bin
+# -rw-r--r-- 1 root root    35982 Jul 20 09:05 dotnet-CjdMQPqM.js
+# -rw-r--r-- 1 root root   149565 Jul 20 09:05 dotnet.native.8.0.7.lb1gfjpp0m-Dp0tYBIl.js
+# -rw-r--r-- 1 root root   222989 Jul 20 09:05 dotnet.runtime.8.0.7.bxd2x47e2z-B0R9BXGJ.js
+# -rw-r--r-- 1 root root 41906074 Jul 20 09:05 index.js
+# -rw-r--r-- 1 root root     1027 Jul 20 09:05 package.json
 ```
 
-## Know issues
+## Known issues
 It comes with some known issues
 
  - The library is huge, and slow. It's currently base64 encoding the WASM because of the issues getting WASM building across bundlers (**help wanted**)

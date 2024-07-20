@@ -3,7 +3,7 @@ import copy from 'rollup-plugin-copy';
 import { getConfig } from './config.js';
 import {join} from "path"
 
-const outputDir = join(import.meta.dirname, "/dist/")
+const outputDir = join(import.meta.dirname, "/dist/npm/")
 
 function shimModule () {
   return `

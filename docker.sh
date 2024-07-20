@@ -41,7 +41,7 @@ services:
 EOF
 
     docker-compose -f .build-files/compose.yaml build
-    docker-compose -f .build-files/compose.yaml run --service-ports dev bash
+    docker-compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
 }
 
-docker
+docker "$@"
