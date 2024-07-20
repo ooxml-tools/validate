@@ -1,7 +1,12 @@
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import { readFile } from "fs/promises";
-import { FORMATS, getFileFormatFromName, OFFICE_VERSIONS, ValidationResult } from "../index";
+import {
+  FORMATS,
+  getFileFormatFromName,
+  OFFICE_VERSIONS,
+  ValidationResult,
+} from "../index";
 import validateDocument from "../index";
 import chalk from "chalk";
 

@@ -13,7 +13,9 @@
     "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm",
     "build:dotnet": "cd ./dotnet && dotnet workload restore  && dotnet publish -c Release && mkdir -p ./_framework && rm -rf ./_framework && cp -r ./bin/Release/net8.0/wwwroot/_framework ./_framework",
     "build:npm": "rollup -c rollup.config.ts --configPlugin typescript",
-    "lint:format": "npx prettier . --write",
+    "lint:format": "npm run lint:format:js && npm run lint:format:dotnet",
+    "lint:format:js": "npx prettier . --write",
+    "lint:format:dotnet": "cd dotnet && dotnet format",
     "lint": "npx prettier . --check",
     "test": "npm run lint"
   },

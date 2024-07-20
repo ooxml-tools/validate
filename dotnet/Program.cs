@@ -7,15 +7,19 @@ using System.IO;
 using System.Dynamic;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 enum DocFormat { docx, xlsx, pttx };
 
 public partial class Docxidator
 {
-    internal static string GetValidationErrorsData(IEnumerable<ValidationErrorInfo> results) {
+    [RequiresUnreferencedCode("Calls System.Collections.Generic.List<T>.Add(T)")]
+    internal static string GetValidationErrorsData(IEnumerable<ValidationErrorInfo> results)
+    {
         List<dynamic> res = new List<dynamic>();
 
-        foreach (ValidationErrorInfo validationErrorInfo in results) {
+        foreach (ValidationErrorInfo validationErrorInfo in results)
+        {
             dynamic dyno = new ExpandoObject();
             dyno.Description = validationErrorInfo.Description;
             dyno.Path = validationErrorInfo.Path;
@@ -36,18 +40,25 @@ public partial class Docxidator
         return json;
     }
 
-    internal static OpenXmlPackage GetDocument(DocFormat format, Stream stream) {
-        if (format == DocFormat.pttx) {
+    internal static OpenXmlPackage GetDocument(DocFormat format, Stream stream)
+    {
+        if (format == DocFormat.pttx)
+        {
             return PresentationDocument.Open(stream, false);
-        } else if (format == DocFormat.xlsx) {
+        }
+        else if (format == DocFormat.xlsx)
+        {
             return SpreadsheetDocument.Open(stream, false);
 
-        } else {
+        }
+        else
+        {
             return WordprocessingDocument.Open(stream, false);
         }
     }
 
     [JSExport]
+    [RequiresUnreferencedCode("Calls Docxidator.GetValidationErrorsData(IEnumerable<ValidationErrorInfo>)")]
     internal static string Process(Int32 id, string formatRaw, string officeVersionRaw)
     {
         var file = Convert.FromBase64String(GetFile(id));

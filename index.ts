@@ -66,10 +66,10 @@ export type ValidationResult = {
   path: {
     xpath: string;
     partUri: string;
-  },
+  };
   id: string;
   errorType: number;
-}
+};
 
 export default async function validateDocument(
   inputArrayBuffer: Uint8Array,
