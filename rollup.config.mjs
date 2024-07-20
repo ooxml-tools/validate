@@ -140,7 +140,7 @@ export default {
     copy({
       targets: [
         // FIXME: This is literally just for a `new URL()` in the dotnet runtime file
-        { src: "_framework/dotnet.native.wasm", dest: outputDir },
+        { src: "./dotnet/bin/Release/net8.0/wwwroot/_framework/dotnet.native.wasm", dest: outputDir },
       ],
     }),
   ],
