@@ -2,16 +2,13 @@
 set -e 
 
 docker_command () {
-    echo ">> 1"
     if [[ "$DOCKER_RUNNING" == "true" ]]; then
         echo "Error: Already running inside container"
         help
         exit 1
     fi
 
-    echo ">> 2"
     cleanup() {
-        echo ">> cleanup"
         rm .build-files/Dockerfile || true
         rm .build-files/compose.yaml || true
         rmdir .build-files || true
@@ -40,12 +37,8 @@ services:
       - ../:/code
 EOF
 
-
-    ls -l .build-files
-    docker --version
     docker compose -f .build-files/compose.yaml build
     docker compose -f .build-files/compose.yaml run --service-ports dev ${@:-bash}
 }
 
-echo "$@"
 docker_command "$@"
