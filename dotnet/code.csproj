@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <WasmStripILAfterAOT>true</WasmStripILAfterAOT>
+    <TargetFramework>net8.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <WasmAppDir>./dist</WasmAppDir>
+    <WasmEnableWebcil>true</WasmEnableWebcil>
+  </PropertyGroup>
+  <ItemGroup>
+    <WasmExtraFilesToDeploy Include="wwwroot/config.js" />
+    <WasmExtraFilesToDeploy Include="wwwroot/fetch.js" />
+    <WasmExtraFilesToDeploy Include="wwwroot/index.js" />
+    <WasmExtraFilesToDeploy Include="wwwroot/main.js" />
+    <WasmExtraFilesToDeploy Include="wwwroot/package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot/_framework/**/*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.5" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

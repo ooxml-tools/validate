@@ -5,7 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm && npm run build:pkgjson",
-    "build:dotnet": "dotnet workload restore && dotnet publish -c Release && rm -rf ./_framework && cp -r ./dotnet/bin/Release/net8.0/wwwroot/_framework ./_framework",
+    "build:dotnet": "cd ./dotnet && dotnet workload restore  && dotnet publish -c Release && mkdir -p ./_framework && rm -rf ./_framework && cp -r ./bin/Release/net8.0/wwwroot/_framework ./_framework",
     "build:npm": "rollup -c rollup.config.mjs",
     "build:pkgjson": "cp package.json ./dist/"
   },

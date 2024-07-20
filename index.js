@@ -75,7 +75,7 @@ export default async function validateDocument(inputArrayBuffer, format, officeV
 }
 
 async function _ready() {
-    const mod = (await import("./_framework/dotnet.js")).dotnet
+    const mod = (await import("./dotnet/_framework/dotnet.js")).dotnet
     const res = await mod
         .withDiagnosticTracing(false)
         .withConfig(config)

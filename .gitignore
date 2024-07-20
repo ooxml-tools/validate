@@ -1,2 +1,6 @@
 /node_modules
 /dist
+/.build-files
+/dotnet/bin
+/dotnet/obj
+/dotnet/_framework
