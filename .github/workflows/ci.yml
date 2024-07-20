@@ -18,8 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: ./docker.sh npm ci
       - run: ./docker.sh npm run ci:build
+      - run: ./docker.sh npm test
       - uses: actions/upload-artifact@v4
         with:
           name: npm
