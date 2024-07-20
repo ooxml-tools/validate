@@ -60,4 +60,4 @@ if (argv.outputFormat === "json") {
 } else {
   consolePrintErrors(results);
 }
-process.exit(0)
+process.exit(0);
