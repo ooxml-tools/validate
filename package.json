@@ -1,23 +1,27 @@
 {
   "name": "@ooxml-tools/validate",
   "version": "0.1.0",
-  "main": "./node/index.js",
-  "browser": "./web/index.js",
+  "type": "module",
+  "main": "./index.js",
   "scripts": {
-    "build": "npm run build:dotnet && npm run build:npm && npm run build:pkgjson",
+    "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm && npm run build:pkgjson",
     "build:dotnet": "dotnet workload restore && dotnet publish -c Release && rm -rf ./_framework && cp -r ./dotnet/bin/Release/net8.0/wwwroot/_framework ./_framework",
-    "build:npm": "npm run build:npm:web && npm run build:npm:node",
-    "build:npm:web": "rollup -c rollup.config.web.mjs",
-    "build:npm:node": "rollup -c rollup.config.node.mjs",
+    "build:npm": "rollup -c rollup.config.mjs",
     "build:pkgjson": "cp package.json ./dist/"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-virtual": "^3.0.2",
     "rollup": "^4.18.1",
-    "rollup-plugin-copy": "^3.5.0"
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "dependencies": {
+    "chalk": "^5.3.0",
     "yargs": "^17.7.2"
   }
 }

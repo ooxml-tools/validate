@@ -3,6 +3,18 @@ import { hideBin } from 'yargs/helpers'
 import {readFile} from "fs/promises"
 import { FORMATS, OFFICE_VERSIONS } from '../index.js';
 import validateDocument from '../index.js';
+import chalk from 'chalk';
+
+function consolePrintErrors (errors) {
+    if (errors.length > 0) {
+        for (const error of errors) {
+            console.log(chalk.blue(`.${error.Path.PartUri}/${error.Path.XPath}`));
+            console.log(`${chalk.red(error.Id)}: ${error.Description}`)
+        }
+        console.log("")
+    }
+    console.log(chalk[errors.length > 0 ? "red" : "green"](`Found ${chalk.bold(errors.length)} errors`))
+}
 
 yargs(hideBin(process.argv))
     .command('$0 <filepath>', 'validate docx files', (yargs) => {
@@ -17,6 +29,12 @@ yargs(hideBin(process.argv))
             choices: OFFICE_VERSIONS,
             default: OFFICE_VERSIONS[0]
         })
+        .option('output-format', {
+            alias: 'of',
+            describe: 'format of output',
+            choices: ["pretty", "json"],
+            default: "pretty"
+        })
             .option('format', {
                 alias: 'f',
                 describe: 'document format (should be auto-detected)',
@@ -25,9 +43,12 @@ yargs(hideBin(process.argv))
     }, async (argv) => {
         const file = await readFile(argv.filepath);
         const results = await validateDocument(file, argv.officeVersion, argv.format)
-        console.log(
-            JSON.stringify(results, null, 2)
-        );
-        console.log(`Found ${results.length} errors`)
+        if (argv.outputFormat === "json") {
+            console.log(
+                JSON.stringify(results, null, 2)
+            );
+        } else {
+            consolePrintErrors(results)
+        }
     })
     .argv
