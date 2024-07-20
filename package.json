@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "type": "module",
   "main": "./index.js",
+  "bin": {
+    "ooxml-validate": "ooxml-validate.js"
+  },
   "scripts": {
     "ci:build": "npm install && npm run build",
     "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm && npm run build:pkgjson",
