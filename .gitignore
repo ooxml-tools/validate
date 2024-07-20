@@ -4,3 +4,4 @@
 /dotnet/bin
 /dotnet/obj
 /dotnet/_framework
+.DS_Store
