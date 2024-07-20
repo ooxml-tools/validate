@@ -4,6 +4,7 @@
   "type": "module",
   "main": "./index.js",
   "scripts": {
+    "ci:build": "npm install && npm run build",
     "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm && npm run build:pkgjson",
     "build:dotnet": "cd ./dotnet && dotnet workload restore  && dotnet publish -c Release && mkdir -p ./_framework && rm -rf ./_framework && cp -r ./bin/Release/net8.0/wwwroot/_framework ./_framework",
     "build:npm": "rollup -c rollup.config.mjs",
@@ -25,6 +26,6 @@
     "yargs": "^17.7.2"
   },
   "engines": {
-    "node": "20.x"
+    "node": ">=20.x"
   }
 }
