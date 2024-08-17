@@ -129,6 +129,7 @@ export default [
     input: {
       index: "index.ts",
       "bin/ooxml-validate": "bin/ooxml-validate.ts",
+      "command": "command.ts",
     },
     output: {
       dir: outputDir,
@@ -156,6 +157,11 @@ export default [
   {
     input: "index.ts",
     output: [{ file: `${outputDir}/types.d.ts`, format: "es" }],
+    plugins: [typescriptPaths({ preserveExtensions: true }), dts()],
+  },
+  {
+    input: "command.ts",
+    output: [{ file: `${outputDir}/command.d.ts`, format: "es" }],
     plugins: [typescriptPaths({ preserveExtensions: true }), dts()],
   },
 ];

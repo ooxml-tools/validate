@@ -19,6 +19,10 @@
     "lint": "npx prettier . --check",
     "test": "tsx ./test/index.ts && npm run lint"
   },
+  "exports": {
+    ".": "./dist/npm/index.js",
+    "./command": "./dist/npm/command.js"
+  },
   "files": [
     "./dist/npm",
     "./package.json",
