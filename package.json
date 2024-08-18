@@ -1,6 +1,6 @@
 {
   "name": "@ooxml-tools/validate",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "license": "MIT",
   "type": "module",
   "main": "./dist/npm/index.js",
