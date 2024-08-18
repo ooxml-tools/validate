@@ -52,6 +52,7 @@ jobs:
           files: |
             npm.zip
       - run: |
+          cd npm
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
