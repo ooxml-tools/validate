@@ -129,7 +129,7 @@ export default [
     input: {
       index: "index.ts",
       "bin/ooxml-validate": "bin/ooxml-validate.ts",
-      "command": "command.ts",
+      command: "command.ts",
     },
     output: {
       dir: outputDir,
