@@ -47,6 +47,9 @@ jobs:
         with:
           files: |
             npm.zip
-      - run: cd npm && npm publish
+      - run: |
+          cd npm
+          npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
