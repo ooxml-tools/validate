@@ -10,7 +10,7 @@ const outputDir = join(import.meta.dirname, "/dist/npm/");
 
 function shimModule() {
   return `
-  const mod = (typeof window === 'undefined') ? await import(await import.meta.resolve("node:module")) : {}
+  const mod = (typeof window === 'undefined') ? require(require.resolve("node:module")) : {}
   export const {
       _cache,
       _pathCache,
@@ -133,7 +133,8 @@ export default [
     },
     output: {
       dir: outputDir,
-      format: "esm",
+      format: "cjs",
+      exports: "named"
     },
     external: ["yargs/yargs", "yargs/helpers", "fs/promises"],
     plugins: [

@@ -21,11 +21,11 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/npm/index.js",
+      "default": "./dist/npm/index.js",
       "types": "./dist/npm/types.d.ts"
     },
     "./command": {
-      "import": "./dist/npm/command.js",
+      "default": "./dist/npm/command.js",
       "types": "./dist/npm/command.d.ts"
     }
   },
