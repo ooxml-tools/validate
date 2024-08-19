@@ -133,7 +133,7 @@ export default [
     },
     output: {
       dir: outputDir,
-      format: "es",
+      format: "esm",
     },
     external: ["yargs/yargs", "yargs/helpers", "fs/promises"],
     plugins: [
