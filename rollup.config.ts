@@ -134,7 +134,7 @@ export default [
     output: {
       dir: outputDir,
       format: "cjs",
-      exports: "named"
+      exports: "named",
     },
     external: ["yargs/yargs", "yargs/helpers", "fs/promises"],
     plugins: [
