@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import * as command from "../command";
 
-const argv = yargs(hideBin(process.argv)).command(
+yargs(hideBin(process.argv)).command(
   command.cmd,
   command.desc,
   command.builder,
