@@ -1,7 +1,7 @@
 {
   "name": "@ooxml-tools/validate",
   "description": "Validate Office Open XML files in nodejs the browser",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "main": "./dist/npm/index.js",
   "types": "./dist/npm/types.d.ts",
