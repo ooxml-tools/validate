@@ -1,4 +1,10 @@
-# <img alt="@ooxml-tools/validate" height="56" src="https://github.com/user-attachments/assets/e71da63d-816f-4851-a4db-7e62412605cf#gh-dark-mode-only" /><img alt="@ooxml-tools/validate" height="56" src="https://github.com/user-attachments/assets/d37c33e4-cde6-416b-ad09-54d005bc9ac2#gh-light-mode-only" />
+<h1>
+    <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/e71da63d-816f-4851-a4db-7e62412605cf">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d37c33e4-cde6-416b-ad09-54d005bc9ac2">
+    <img alt="@ooxml-tools/validate" height="56" src="https://github.com/user-attachments/assets/d37c33e4-cde6-416b-ad09-54d005bc9ac2">
+    </picture>
+</h1>
 
 Validate Office Open XML files in nodejs the browser
 
