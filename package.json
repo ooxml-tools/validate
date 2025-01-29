@@ -2,15 +2,15 @@
   "name": "@ooxml-tools/validate",
   "version": "0.1.16",
   "license": "MIT",
-  "type": "module",
   "main": "./dist/npm/index.js",
   "types": "./dist/npm/types.d.ts",
+  "type": "module",
   "bin": {
     "ooxml-validate": "./dist/npm/bin/ooxml-validate.js"
   },
   "scripts": {
     "ci:build": "npm install && npm run build",
-    "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm",
+    "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm && chmod +x ./dist/npm/bin/ooxml-validate.js",
     "build:dotnet": "cd ./dotnet && dotnet workload restore  && dotnet publish -c Release && mkdir -p ./_framework && rm -rf ./_framework && cp -r ./bin/Release/net8.0/wwwroot/_framework ./_framework",
     "build:npm": "rollup -c rollup.config.ts --configPlugin typescript",
     "lint:format": "npm run lint:format:js && npm run lint:format:dotnet",

@@ -19,6 +19,6 @@
     "baseUrl": ".",
     "paths": {}
   },
-  "exclude": ["dist", "test", "node_modules", "old", "dotnet"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "exclude": ["test", "node_modules", "old", "dotnet"],
+  "include": ["**/*.ts", "**/*.tsx", "dist/npm/_virtual_process-CKiOJcMv.js", "dist/npm/_virtual_module-CLxl0KMW.js", "dist/npm/_virtual_process-qy2l6T47.js", "dist/npm/index.js"]
 }
