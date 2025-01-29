@@ -22,12 +22,12 @@
   },
   "exports": {
     ".": {
-      "default": "./dist/npm/index.js",
-      "types": "./dist/npm/types.d.ts"
+      "types": "./dist/npm/types.d.ts",
+      "default": "./dist/npm/index.js"
     },
     "./command": {
-      "default": "./dist/npm/command.js",
-      "types": "./dist/npm/command.d.ts"
+      "types": "./dist/npm/command.d.ts",
+      "default": "./dist/npm/command.js"
     }
   },
   "files": [
