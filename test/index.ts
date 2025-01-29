@@ -1,4 +1,4 @@
-import validate from "../dist/npm/index"
+import validate from "../dist/npm/index";
 import { execa } from "execa";
 import test from "node:test";
 import { readFile } from "fs/promises";
