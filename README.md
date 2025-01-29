@@ -1,4 +1,4 @@
-# <img alt="@ooxml-tools/validate" height="56" src="https://github.com/user-attachments/assets/d52e1422-5601-427f-aad2-3a47a77651fe" />
+# <img alt="@ooxml-tools/validate" height="56" src="https://github.com/user-attachments/assets/e71da63d-816f-4851-a4db-7e62412605cf#gh-dark-mode-only" /><img alt="@ooxml-tools/validate" height="56" src="https://github.com/user-attachments/assets/d37c33e4-cde6-416b-ad09-54d005bc9ac2#gh-light-mode-only" />
 
 Validate Office Open XML files in nodejs the browser
 
