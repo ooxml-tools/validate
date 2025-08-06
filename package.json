@@ -4,7 +4,7 @@
   "version": "0.2.4",
   "license": "MIT",
   "main": "./dist/npm/index.js",
-  "types": "./dist/npm/types.d.ts",
+  "types": "./dist/npm/index.d.ts",
   "type": "module",
   "bin": {
     "ooxml-validate": "./dist/npm/bin/ooxml-validate.js"
@@ -22,7 +22,7 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/npm/types.d.ts",
+      "types": "./dist/npm/index.d.ts",
       "default": "./dist/npm/index.js"
     },
     "./command": {
@@ -49,6 +49,7 @@
     "tsx": "^4.17.0"
   },
   "dependencies": {
+    "@rollup/rollup-linux-arm64-gnu": "^4.46.2",
     "chalk": "^5.3.0",
     "yargs": "^17.7.2"
   },

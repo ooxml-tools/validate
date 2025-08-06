@@ -25,9 +25,9 @@
       },
       "Microsoft.NET.Sdk.WebAssembly.Pack": {
         "type": "Direct",
-        "requested": "[8.0.12, )",
-        "resolved": "8.0.12",
-        "contentHash": "JS5B7ZJVqaBOjlbjDgOkg+COEy24CB6IdGiwNeZnPJMoIZFdxehGFUmlxl4Mz3GZaoIduOtMtwkEdy6jh+NUpg=="
+        "requested": "[8.0.19, )",
+        "resolved": "8.0.19",
+        "contentHash": "Cm/sq4ET7XGU7jBSfSh+s+eV0faJ1RnErpImRYN7+d5loWISBwl22qsM6sn9StUWKJao+xGvF0IxgyPVnY20Vw=="
       },
       "Newtonsoft.Json": {
         "type": "Direct",
