@@ -38,8 +38,6 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.2",
     "@rollup/plugin-virtual": "^3.0.2",
-    "@rollup/rollup-linux-arm64-gnu": "^4.46.2",
-    "@rollup/wasm-node": "^4.46.2",
     "@types/yargs": "^17.0.32",
     "execa": "^9.3.0",
     "prettier": "3.6.2",
