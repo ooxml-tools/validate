@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: ./docker.sh npm run ci:build
+      - run: ./docker.sh npm install @rollup/rollup-linux-x64-gnu && npm run ci:build
       - run: ./docker.sh npm test
       - uses: actions/upload-artifact@v4
         with:
