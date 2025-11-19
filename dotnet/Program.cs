@@ -61,7 +61,7 @@ public partial class Docxidator
     [RequiresUnreferencedCode("Calls Docxidator.GetValidationErrorsData(IEnumerable<ValidationErrorInfo>)")]
     internal static string Process(Int32 id, string formatRaw, string officeVersionRaw)
     {
-        var file = Convert.FromBase64String(GetFile(id));
+        var file = GetFile(id);
         Enum.TryParse(officeVersionRaw, out FileFormatVersions officeVersion);
         Enum.TryParse(formatRaw, out DocFormat format);
 
@@ -73,5 +73,5 @@ public partial class Docxidator
     }
 
     [JSImport("getFile", "index.js")]
-    internal static partial string GetFile(Int32 id);
+    internal static partial byte[] GetFile(Int32 id);
 }

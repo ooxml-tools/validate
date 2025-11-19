@@ -104,7 +104,7 @@ ls -l ./dist/npm/
 It comes with some known issues
 
 - The library is huge, and slow. It's currently base64 encoding the WASM because of the issues getting WASM building across bundlers (**help wanted**)
-- The library base64 encodes the input OOXML file, which is slow. We should be using streaming (**help wanted**)
+- ~~The library base64 encodes the input OOXML file, which is slow. We should be using streaming (**help wanted**)~~
 - The C# is probably very poor quality... I'm not a C# developer (**help wanted**)
 
 ## Licence

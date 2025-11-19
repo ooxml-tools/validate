@@ -3,15 +3,6 @@ import config from "$blazor-config";
 let FILE_ID = 0;
 let fileStore = new Map();
 
-function arrayBufferToBase64(file: Uint8Array) {
-  return btoa(
-    new Uint8Array(file).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      "",
-    ),
-  );
-}
-
 export class InvalidVersionError extends Error {
   constructor(officeVersion: string) {
     super(`Invalid office version: ${officeVersion}`);
@@ -116,7 +107,7 @@ async function _ready() {
       if (!file) {
         throw new Error(`No such file '${id}'`);
       }
-      return arrayBufferToBase64(file);
+      return file;
     },
   });
 
