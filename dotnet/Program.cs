@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
 
-enum DocFormat { docx, xlsx, pttx };
+enum DocFormat { docx, xlsx, pptx };
 
 public partial class Docxidator
 {
@@ -42,7 +42,7 @@ public partial class Docxidator
 
     internal static OpenXmlPackage GetDocument(DocFormat format, Stream stream)
     {
-        if (format == DocFormat.pttx)
+        if (format == DocFormat.pptx)
         {
             return PresentationDocument.Open(stream, false);
         }
