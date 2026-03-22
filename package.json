@@ -9,6 +9,10 @@
   "bin": {
     "ooxml-validate": "./dist/npm/bin/ooxml-validate.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ooxml-tools/validate"
+  },
   "scripts": {
     "ci:build": "npm install && npm run build",
     "build": "rm -rf ./dist/* && npm run build:dotnet && npm run build:npm && chmod +x ./dist/npm/bin/ooxml-validate.js",
