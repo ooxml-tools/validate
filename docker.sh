@@ -21,7 +21,7 @@ FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y curl dotnet-sdk-8.0 python3 libatomic1 build-essential && dotnet workload install wasm-tools
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && bash nodesource_setup.sh && rm nodesource_setup.sh && apt-get install nodejs -y
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x -o nodesource_setup.sh && bash nodesource_setup.sh && rm nodesource_setup.sh && apt-get install nodejs -y
 
 WORKDIR /code
 EOF
