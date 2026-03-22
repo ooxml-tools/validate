@@ -26,13 +26,13 @@ function consolePrintErrors(errors: ValidationResult[]) {
   );
 }
 
-export const cmd = "$0 <filepath>";
+export const cmd = "$0 <ooxmlpath>";
 
 export const desc = "validate docx files";
 
 export const builder = (yargs: Argv) => {
   yargs
-    .positional("filepath", {
+    .positional("ooxmlpath", {
       describe: "filepath of OOXML file",
       type: "string",
     })
@@ -53,22 +53,22 @@ export const builder = (yargs: Argv) => {
       describe: "document format (auto-detected from file extension)",
       choices: FORMATS,
     })
-    .demandOption(["filepath"]);
+    .demandOption(["ooxmlpath"]);
 };
 
 export async function handler({
-  filepath,
+  ooxmlpath,
   format,
   officeVersion,
   outputFormat,
 }: ArgumentsCamelCase<{
-  filepath: string;
+  ooxmlpath: string;
   format: Format;
   officeVersion: OfficeVersion;
   outputFormat: string;
 }>) {
-  const file = await readFile(filepath);
-  const parsedFormat = format ?? getFileFormatFromName(filepath);
+  const file = await readFile(ooxmlpath);
+  const parsedFormat = format ?? getFileFormatFromName(ooxmlpath);
   const results = await validate(file, parsedFormat, officeVersion);
   if (outputFormat === "json") {
     console.log(JSON.stringify(results, null, 2));
