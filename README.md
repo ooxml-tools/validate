@@ -11,7 +11,7 @@ Validate Office Open XML files in nodejs the browser
 ## Install
 
 ```bash
-npm install @ooxml-tools/validate --save
+pnpm install @ooxml-tools/validate --save
 ```
 
 ## CLI
@@ -75,13 +75,13 @@ You'll need dotnet 8 installed locally, to whether it's installed run `dotnet --
 You'll also need to install the `node_modules` via
 
 ```bash
-npm install
+pnpm install
 ```
 
 Build the library run
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 The built npm package will be output to `./dist/npm/*`

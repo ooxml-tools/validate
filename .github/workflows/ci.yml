@@ -19,8 +19,12 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
-      - run: ./docker.sh npm run ci:build
-      - run: ./docker.sh npm test
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
+      - run: ./docker.sh pnpm run ci:build
+      - run: ./docker.sh pnpm test
       - uses: actions/upload-artifact@v6
         with:
           name: npm
@@ -37,6 +41,10 @@ jobs:
       contents: write
       id-token: write
     steps:
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
       - uses: actions/setup-node@v6
         with:
           node-version: "24.x"
@@ -54,6 +62,6 @@ jobs:
             npm.zip
       - run: |
           cd npm
-          npm publish
+          pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
