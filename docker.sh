@@ -27,6 +27,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-p
 
 RUN apt-get update && apt-get install -y curl dotnet-sdk-8.0 python3 libatomic1 build-essential && dotnet workload install wasm-tools
 RUN curl -fsSL https://deb.nodesource.com/setup_24.x -o nodesource_setup.sh && bash nodesource_setup.sh && rm nodesource_setup.sh && apt-get install nodejs -y
+RUN npm install -g pnpm
 
 WORKDIR /code
 EOF
