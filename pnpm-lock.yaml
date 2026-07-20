@@ -25,8 +25,8 @@ importers:
         specifier: ^17.0.32
         version: 17.0.35
       execa:
-        specifier: ^9.3.0
-        version: 9.6.1
+        specifier: ^10.0.0
+        version: 10.0.0
       prettier:
         specifier: ^3.8.3
         version: 3.8.4
@@ -483,10 +483,6 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
-  cross-spawn@7.0.6:
-    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
-    engines: {node: '>= 8'}
-
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
@@ -506,9 +502,9 @@ packages:
   estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
-  execa@9.6.1:
-    resolution: {integrity: sha512-9Be3ZoN4LmYR90tUoVu2te2BsbzHfhJyfEiAVfz7N5/zv+jduIfLrV2xdQXOHbaD6KgpGdO9PRPM1Y4Q9QkPkA==}
-    engines: {node: ^18.19.0 || >=20.5.0}
+  execa@10.0.0:
+    resolution: {integrity: sha512-Cxl6MKxB1dr1H0FHmiizJ+lavKF7pV+fcDZFyqMB8d5m7qUPm/OtZYcD5vPWePKxSnTQ57KuBd9mtdZ3oNCvyQ==}
+    engines: {node: '>=22'}
 
   fast-glob@3.3.3:
     resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}
@@ -618,9 +614,6 @@ packages:
     resolution: {integrity: sha512-mE00Gnza5EEB3Ds0HfMyllZzbBrmLOX3vfWoj9A9PEnTfratQ/BcaJOuMhnkhjXvb2+FkY3VuHqtAGpTPmglFQ==}
     engines: {node: '>=18'}
 
-  isexe@2.0.0:
-    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
-
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -655,10 +648,6 @@ packages:
   path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
-
-  path-key@3.1.1:
-    resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
-    engines: {node: '>=8'}
 
   path-key@4.0.0:
     resolution: {integrity: sha512-haREypq7xkM7ErfgIyA0z+Bj4AGKlMSdlQE2jvJo6huWD1EdkKYV+G/T4nq0YEF2vgTT8kqMFKo1uHn950r4SQ==}
@@ -737,14 +726,6 @@ packages:
     resolution: {integrity: sha512-JfVoxf4FxQI5qpsPbkHhZo+n6N9YMJobyl4oGEUBb/31oQYlgTjkXQD8PBiafS2UbWoxrTO0Z5PJUBXEPAG1Zw==}
     engines: {node: '>=16.0.0'}
 
-  shebang-command@2.0.0:
-    resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
-    engines: {node: '>=8'}
-
-  shebang-regex@3.0.0:
-    resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
-    engines: {node: '>=8'}
-
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
@@ -797,9 +778,9 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
 
-  which@2.0.2:
-    resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
-    engines: {node: '>= 8'}
+  which-command@0.1.0:
+    resolution: {integrity: sha512-XZyoF5/5hZtXitIwzrU4NKK+Wtbb9aB9CezUEw2Q0wlYK8NUYQxC1rRXgNueYLtBAJwXIb+/tFVk4dozciNJMA==}
+    engines: {node: '>=22'}
     hasBin: true
 
   wrap-ansi@9.0.2:
@@ -1102,12 +1083,6 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  cross-spawn@7.0.6:
-    dependencies:
-      path-key: 3.1.1
-      shebang-command: 2.0.0
-      which: 2.0.2
-
   dir-glob@3.0.1:
     dependencies:
       path-type: 4.0.0
@@ -1147,19 +1122,20 @@ snapshots:
 
   estree-walker@2.0.2: {}
 
-  execa@9.6.1:
+  execa@10.0.0:
     dependencies:
       '@sindresorhus/merge-streams': 4.0.0
-      cross-spawn: 7.0.6
       figures: 6.1.0
       get-stream: 9.0.1
       human-signals: 8.0.1
       is-plain-obj: 4.1.0
       is-stream: 4.0.1
       npm-run-path: 6.0.0
+      path-key: 4.0.0
       pretty-ms: 9.3.0
       signal-exit: 4.1.0
       strip-final-newline: 4.0.0
+      which-command: 0.1.0
       yoctocolors: 2.1.2
 
   fast-glob@3.3.3:
@@ -1265,8 +1241,6 @@ snapshots:
 
   is-unicode-supported@2.1.0: {}
 
-  isexe@2.0.0: {}
-
   js-tokens@4.0.0:
     optional: true
 
@@ -1301,8 +1275,6 @@ snapshots:
   parse-ms@4.0.0: {}
 
   path-is-absolute@1.0.1: {}
-
-  path-key@3.1.1: {}
 
   path-key@4.0.0: {}
 
@@ -1401,12 +1373,6 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  shebang-command@2.0.0:
-    dependencies:
-      shebang-regex: 3.0.0
-
-  shebang-regex@3.0.0: {}
-
   signal-exit@4.1.0: {}
 
   slash@3.0.0: {}
@@ -1445,9 +1411,7 @@ snapshots:
 
   universalify@0.1.2: {}
 
-  which@2.0.2:
-    dependencies:
-      isexe: 2.0.0
+  which-command@0.1.0: {}
 
   wrap-ansi@9.0.2:
     dependencies:
